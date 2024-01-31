@@ -54,8 +54,11 @@ class Stack:
 
         self.items = temp.items
 
-    
-    
+    def power_of_two(self,n):
+        self.push(1) 
+        for i in range(n):
+            a=self.peek()
+            self.push(a*2)
 
 # Example usage with display
 stack = Stack()
@@ -65,7 +68,7 @@ stack.push(3)
 stack.push(2)
 stack.push(4)
 stack.push(3)
-
+stack.power_of_two(5)
 print("Original Stack:")
 stack.display()
 
@@ -74,30 +77,3 @@ stack.display()
 # print("Stack after removing duplicates:")
 stack.reverse_stack()
 stack.display()
-
-class Queue:
-    def __init__(self):
-        self.items = []
-
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def enqueue(self, item):
-        self.items.append(item)
-
-    def dequeue(self):
-        if not self.is_empty():
-            return self.items.pop(0)
-        else:
-            raise IndexError("dequeue from an empty queue")
-
-    def front(self):
-        if not self.is_empty():
-            return self.items[0]
-        else:
-            raise IndexError("front from an empty queue")
-
-    def size(self):
-        return len(self.items)
-
-

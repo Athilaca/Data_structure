@@ -1,0 +1,103 @@
+# class graph:
+#     def __init__(self):
+#        self.graph={}
+
+#     def add_vertex(self,node):
+#         self.graph[node]=[]   
+
+#     def add_edge(self,node1,node2):
+#         if node1  and node2 in self.graph:
+#             self.graph[node1].append(node2)
+#             self.graph[node2].append(node1)
+
+#     def remove_vertex(self, vertex):   
+#         if vertex in self.graph:
+#             del self.graph[vertex]  
+        
+#     def bfs(self,start):
+#         queue=[start]
+#         visited=set()
+#         while queue:
+#             node=queue.pop(0)
+#             if node not in visited:
+                
+#                 print(node,end=" ")
+#                 visited.add(node)
+#                 queue.extend(x for x in self.graph[node] if x not in visited)
+
+#     def dfs(self,start):
+#         queue=[start]
+#         visited=set()
+#         while queue:
+#             node=queue.pop()
+#             if node not in visited:
+                
+#                 print(node,end=" ")
+#                 visited.add(node)
+#                 queue.extend(x for x in self.graph[node] if x not in visited)
+            
+
+#     def display_graph(self):
+#         for node, neighbors in self.graph.items():
+#             print(f"{node}: {neighbors}")    
+
+
+# grap = graph()
+# grap.add_vertex("A")
+# grap.add_vertex("B")
+# grap.add_vertex("C")
+# grap.add_vertex("D")
+
+# grap.add_edge("A", "B")
+# grap.add_edge("A", "C")
+# grap.add_edge("B", "C")
+# grap.add_edge("C", "D")
+# grap.remove_vertex('C')
+# grap.dfs('A')
+# grap.display_graph()
+
+class Node:
+    def __init__(self,value):
+        self.value=value
+        self.left=None
+        self.right=None
+
+class BST:
+    def __init__(self):
+        self.root=None
+
+    def insert(self,value):
+        new_node=Node(value)
+        if self.root is None:
+            self.root=new_node
+        else:
+            current=self.root    
+            while current:
+                if current.value>value:
+                    if current.left is None:
+                        current.left=new_node
+                        break
+                    else:
+                        current=current.left
+                else:
+                    if current.right is None:
+                        current.right=new_node
+                    else:
+                        current=current.right
+
+
+    def inorder(self,node):
+      if node:  
+        self.inorder(node.left)
+        print(node.value,end=" ")
+        self.inorder(node.right)                    
+
+
+
+c=BST()
+b=[200,190,215,188,193,209,220,186,189,191,195,208,210,218,230,198,194]
+
+for i in b:
+    c.insert(i)
+
+c.inorder(c.root)
